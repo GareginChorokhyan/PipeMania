@@ -89,7 +89,7 @@ classDiagram
         +input()
     }
 
-    class "Screen::Board" as Board {
+    class Screen_Board["Screen::Board"] {
         -board: ObjectMatrix
         -level: int
         +init(int)
@@ -103,25 +103,25 @@ classDiagram
         +write(info, fileName)
     }
 
-    class "Objects::Object" as Object {
+    class Objects_Object["Objects::Object"] {
         +getShape() Shape
         +rotate()
         +fill()
         +unfill()
     }
 
-    class "Objects::Pipe" as Pipe {
+    class Objects_Pipe["Objects::Pipe"] {
         +generateShape()
         +rotate()
     }
 
     PipeMania --> Controller : creates
-    Controller --> Board : owns
+    Controller --> Screen_Board : owns
     Controller --> Window : owns
     Controller --> FileSystem : uses
-    Window --> Board : reads
-    Board --> Pipe : creates
-    Pipe --|> Object : inherits
+    Window --> Screen_Board : reads
+    Screen_Board --> Objects_Pipe : creates
+    Objects_Pipe --|> Objects_Object : inherits
 ```
 
 ## Demo Screenshots
